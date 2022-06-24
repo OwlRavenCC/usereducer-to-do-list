@@ -1,13 +1,263 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;700&family=Roboto:wght@400;500;700&display=swap");
+
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+  --background-clr: hsl(0, 0%, 100%);
+  --accent-clr: hsl(256, 100%, 65%);
+  --accent-clr-2: hsl(256, 100%, 55%);
+
+  --success-color: hsl(122deg 39% 49%);
+  --danger-color: hsla(0, 100%, 65%);
+
+  --main-text-clr: hsl(0deg 0% 0% / 89%);
+  --spacing: 0.1rem;
+
+  --max-width-desktop: 1200px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background-clr);
+  color: var(--main-text-clr);
+  font-family: "Roboto", sans-serif;
+  font-size: 0.875rem;
+  overflow-x: hidden;
+}
+
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 1.75rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+p {
+  margin-bottom: 1.25rem;
+  color: var(--main-text-clr);
+  text-align: justify;
+  line-height: 2rem;
+}
+
+label {
+  letter-spacing: 0.1rem;
+}
+
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 2.75rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+
+.section {
+  padding: 5rem auto;
+}
+
+.main-app {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: var(--max-width-desktop);
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+  margin: 0 auto;
+  text-transform: uppercase;
+}
+
+.line {
+  background: var(--accent-clr);
+  width: 80%;
+  height: 4px;
+  margin: 0.5rem auto;
+}
+
+.list-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 480px) {
+  .list-form {
+    flex-direction: row;
+    gap: 0rem;
+  }
+}
+
+.list-app-container,
+.list-tasks {
+  margin-top: 2rem;
+}
+
+input[type="text"] {
+  border-radius: 5px;
+  padding: 1.5rem 2rem 0.5rem 1rem;
+  font-size: 0.75rem;
+  border: 2px var(--accent-clr) solid;
+  max-width: 150px;
+}
+
+@media screen and (min-width: 480px) {
+  input[type="text"] {
+    padding: 1.5rem 2rem 0.5rem 1rem;
+    font-size: 1rem;
+    max-width: 500px;
+  }
+}
+
+.input-text:focus {
+  outline-color: var(--accent-clr-2);
+}
+
+label {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder {
+  position: absolute;
+  left: 0;
+  margin-left: 1rem;
+  pointer-events: none;
+  transition: all 0.2s;
+}
+
+.input-text:focus + .placeholder,
+.input-text:not(:placeholder-shown) + .placeholder {
+  transform: scale(0.7) translateY(-1.5rem);
+  margin-left: 0;
+}
+
+.add-button {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border: navajowhite;
+  font-size: 1.5rem;
+  background: var(--accent-clr);
+  color: #fff;
+  margin-left: 1rem;
+  transition: all 0.3s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-button:hover {
+  transform: scale(1.1);
+}
+
+.add-button:active {
+  background: var(--accent-clr-2);
+}
+
+.task {
+  background: transparent;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--accent-clr);
+  max-width: 800px;
+  margin: auto;
+}
+
+.task:hover {
+  background: hsl(0deg 0% 50% / 10%);
+}
+
+.task > .text {
+  flex: 1 1 auto;
+  text-align: left;
+}
+
+.task > .icon {
+  margin: 0 0.35rem;
+  cursor: pointer;
+
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task > .icon:hover {
+  background: #c3c3c333;
+}
+
+.alert {
+  background: black;
+  margin: 2rem auto;
+  border-radius: 5px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 400px;
+  color: #fff;
 }
