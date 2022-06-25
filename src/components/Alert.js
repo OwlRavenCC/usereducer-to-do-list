@@ -11,9 +11,11 @@ const Alert = ({ alert, closeAlert }) => {
   const alertColor = style[type];
 
   useEffect(() => {
-    setTimeout(() => {
+    const setCloseTime = setTimeout(() => {
       closeAlert();
     }, 3000);
+
+    return () => clearTimeout(setCloseTime);
   });
 
   return (
