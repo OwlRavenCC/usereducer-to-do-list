@@ -26,6 +26,10 @@ Variables
   box-sizing: border-box;
 }
 
+html {
+  font-size: 125%;
+}
+
 body {
   background: var(--background-clr);
   color: var(--main-text-clr);
